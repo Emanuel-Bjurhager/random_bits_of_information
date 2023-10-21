@@ -62,6 +62,8 @@ for (let effort = 0; effort <= 9; effort++) {
 
 ##### Overview:
 
+The results show that the effort has a dramatic effect on the execution time, however; the size is not affected by effort.
+
 | Effort | Average execution time (ms) | Execution time stdev  | Average size (kB) | Average size stdev |
 | :---:  |             :---:           |                 :---: |     :---:         |    :---:           |
 | 0      |                        454  | 104                   |  522              |      436           |
@@ -76,3 +78,66 @@ for (let effort = 0; effort <= 9; effort++) {
 | 9      |                       56 273| 9 781                 |  514              |      412           |
 
 </details>
+
+
+##### Graph of average execution time:
+
+In this figure, it can be seen that the execution time increases exponentially with effort. Efforts below 4 are reasonably quick, but after that, the execution time quickly gets very large.
+
+<img width="672" alt="graph_of_average_execution_time" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/bbdf6faf-242a-4074-93ce-9979f0f48a3b">
+
+
+##### The effect of effort on image quality:
+
+Since effort has no effect on image size (this is true for any quality, not just the average case), that raises the question, how the quality is affected by effort? To compare this, and make the difference more obvious, a small portion of the image is displayed from every effort at quality 20.
+
+<details>
+  <summary><i>Images:</i></summary>
+
+###### Effort 0:
+<img width="366" alt="effort0_quality20" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/14fb6502-d346-4b70-ba8d-914c26e70cf8">
+
+###### Effort 1:
+<img width="368" alt="effort1_quality20" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/877051ce-dfe5-40d3-ae97-fca25682c8cf">
+
+###### Effort 2:
+<img width="367" alt="effort2_quality20" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/caedddaa-9c6a-4cc4-8161-ee51b0197bb0">
+
+###### Effort 3:
+<img width="367" alt="effort3_quality20" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/c76de8f6-4c2d-4468-a238-395872fd23a2">
+
+###### Effort 4:
+<img width="369" alt="effort4_quality20" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/ad48e5f7-4c19-4d01-8dc2-c2b49668386a">
+
+###### Effort 5:
+<img width="366" alt="effort5_quality20" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/d5aedf23-bda2-4fc4-8fe8-ea6a558ccf71">
+
+###### Effort 6:
+<img width="368" alt="effort6_quality20" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/3dc032ae-2fcf-40f0-b000-2674d1bd0fad">
+
+###### Effort 7:
+<img width="368" alt="effort7_quality20" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/ab12d48b-f38c-433d-a97e-cb90ac901bea">
+
+###### Effort 8:
+<img width="367" alt="effort8_quality20" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/488dafd0-dbd0-46c7-b5ef-52afc7903d8b">
+
+###### Effort 9:
+<img width="367" alt="effort9_quality20" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/dd9ed567-c907-4e0b-b712-c0f5192e1d20">
+
+</details>
+
+The difference between each effort increasing from 0 to 4 is dramatic, but after that, the difference becomes much smaller, almost negligeble. This is probably because we have hit an upper limit for how good the quality can get in such a small image. To test this teory, lets compare an effort level 0 and 9 image of quality 50:
+
+<details>
+  <summary><i>Images:</i></summary>
+
+###### Effort 0, quality 50:
+<img width="367" alt="effort0_quality50" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/7c21fcc1-c886-4479-99e0-0043e7623297">
+
+
+###### Effort 9, quality 50:
+<img width="367" alt="effort9_quality50" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/0f68f57c-9257-498d-b0b3-f870c7cc3ecb">
+
+</details>
+
+Judging from these two images, it can be seen that the effort 9 image have slightly less noise, and are also a bit sharper. But the difference is not big enough to justify spending 103 times as much computing effort. Basically, the computer has to spend a lot of time trying to fit a “better” image into roughly the same space, and over some point, that is very difficult to do, with almost no improvement after a certain time.
