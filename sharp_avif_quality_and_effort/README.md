@@ -77,7 +77,7 @@ The results show that the effort has a dramatic effect on the execution time, ho
 | 8      |                       29 189| 10 084                |  508              |      408           |
 | 9      |                       56 273| 9 781                 |  514              |      412           |
 
-</details>
+
 
 
 ##### Graph of average execution time:
@@ -141,3 +141,96 @@ The difference between each effort increasing from 0 to 4 is dramatic, but after
 </details>
 
 Judging from these two images, it can be seen that the effort 9 image have slightly less noise, and are also a bit sharper. But the difference is not big enough to justify spending 103 times as much computing effort. Basically, the computer has to spend a lot of time trying to fit a “better” image into roughly the same space, and over some point, that is very difficult to do, with almost no improvement after a certain time.
+
+</details>
+
+<details>
+  <summary><i>The effect of the quality parameter:</i></summary>
+
+##### Overview:
+
+The results show that the quality has a dramatic effect on the size, but also affects the execution time. This makes sense, as a larger image requires more processing, and is slower to write to disk.
+
+| Quality  | Average execution time (ms) | Execution time stdev  | Average size (kB) | Average size stdev |
+| :---:    |             :---:           |                 :---: |     :---:         |    :---:           |
+| 10       |                      8 822  | 12 060                |  73               |      7             |
+| 20       |                     10 779  | 14 627                |  128              |      8             |  
+| 30       |                     12 815  | 17 347                |  193              |      8             |
+| 40       |                     14 996  | 20 683                |  283              |      8             |
+| 50       |                     14 280  | 15 935                |  401              |      9             |
+| 60       |                     16 099  | 17 796                |  554              |      12            |
+| 70       |                     17 090  | 19 120                |  706              |      15            |
+| 80       |                     18 901  | 20 769                |  885              |      19            |
+| 90       |                     21 612  | 23 445                |  1 331            |      21            |
+
+
+
+
+##### Graph of average execution time:
+
+In this figure, it can be seen that the execution time increases linearly with quality.
+
+<img width="677" alt="graph_of_average_execution_time_quality" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/98236376-b88a-4803-8596-48bc304aaee2">
+
+##### Graph of average size:
+In this figure, it can be seen that the size increases exponentially with quality.
+
+<img width="752" alt="graph_of_average_size_quality" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/4c01cf0f-a80c-49a0-83cf-feba7e6d4473">
+
+
+
+Since quality has the most effect on the image size, this raises the question, how the visual quality is affected by the quality parameter? When does it not make sense to increase the quality anymore? To compare this, and make the difference more obvious, a small portion of the image is displayed from every quality at effort 3. Effort 3 was chosen, because, if we should choose effort 0, 1 or 2, then the CPU does not have a lot of time to fit the data into the almost fixed image size, making the quality, the most important quality parameter. By increasing the effort to 3, the CPU should have enough time to make the higher quality settings less useful, but at the expense of execution time. Let us see if this theory is correct or not:
+
+<details>
+  <summary><i>Images:</i></summary>
+
+###### Quality 10:
+<img width="366" alt="effort_3_quality_10_" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/55347a0d-27a4-40b8-8996-b6f6a63c0eea">
+
+###### Quality 20:
+<img width="369" alt="effort_3_quality_20_" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/8211ad60-787a-486f-afa2-1a1582be3fa8">
+
+###### Quality 30:
+<img width="367" alt="effort_3_quality_30_" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/ce2b9fdc-02d8-43e7-a619-9fe357a1a68a">
+
+###### Quality 40:
+<img width="367" alt="effort_3_quality_40_" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/5c22129d-d20a-460b-86e8-70a1d5d0e0e6">
+
+###### Quality 50:
+<img width="365" alt="effort_3_quality_50_" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/10427dba-b76b-467b-9d70-92df1c033b7c">
+
+###### Quality 60:
+<img width="367" alt="effort_3_quality_60_" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/36facb96-59cc-4d51-9f8b-95ff553a619e">
+
+###### Quality 70:
+<img width="366" alt="effort_3_quality_70_" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/c8773e78-499d-40b6-8380-d99e19f53a2c">
+
+###### Quality 80:
+<img width="366" alt="effort_3_quality_80_" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/4883e9c6-9330-492b-8654-40cc6ad5d094">
+
+###### Quality 90:
+<img width="366" alt="effort_3_quality_90_" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/ab34d0b1-6c8f-4e32-939c-f33615ef4ccd">
+
+
+
+</details>
+
+The difference between each quality increasing from 10 to 30 is dramatic, but after that, the difference becomes much smaller. In my example, I think that going from quality 40 to 50 lets more details get included in the image, but those details are mostly minor dust and noise. Therefore, I think that, going from quality 10 and stepping upwards, I think that the best image is at quality 40. There are some minor artifacts at the smooth surface, for example, some color gradients being slightly off, but overall the image looks good at quality 40 and has less noise than the image at quality 50. Comparing quality 50, with 90, the difference is negligible:
+
+<details>
+  <summary><i>Images:</i></summary>
+
+###### Quality 50:
+<img width="365" alt="effort_3_quality_50_" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/10427dba-b76b-467b-9d70-92df1c033b7c">
+
+###### Quality 90:
+<img width="366" alt="effort_3_quality_90_" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/ab34d0b1-6c8f-4e32-939c-f33615ef4ccd">
+
+
+</details>
+
+Here, quality 40 was the best quality, keeping the size as small as possible. However, it had some artifacts that I fear could be of issue in the future, therefore; I am going to use quality 50.
+
+</details>
+
+
