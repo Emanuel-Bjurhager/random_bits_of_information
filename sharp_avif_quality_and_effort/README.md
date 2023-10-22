@@ -217,11 +217,15 @@ Since quality has the most effect on the image size, this raises the question, h
 
 The difference between each quality increasing from 10 to 30 is dramatic, but after that, the difference becomes much smaller. In my example, I think that going from quality 40 to 50 lets more details get included in the image, but those details are mostly minor dust and noise. Therefore, I think that, going from quality 10 and stepping upwards, I think that the best image is at quality 40. There are some minor artifacts at the smooth surface, for example, some color gradients being slightly off, but overall the image looks good at quality 40 and has less noise than the image at quality 50. Comparing quality 50, with 90, the difference is negligible:
 
+
 <details>
   <summary><i>Images:</i></summary>
 
+###### Quality 40:
+<img width="367" alt="effort_3_quality_40__" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/a3180765-34ca-4a27-b05f-2201697fa234">
+
 ###### Quality 50:
-<img width="365" alt="effort_3_quality_50_" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/10427dba-b76b-467b-9d70-92df1c033b7c">
+<img width="366" alt="effort_3_quality_90_" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/ab34d0b1-6c8f-4e32-939c-f33615ef4ccd">
 
 ###### Quality 90:
 <img width="366" alt="effort_3_quality_90_" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/ab34d0b1-6c8f-4e32-939c-f33615ef4ccd">
@@ -229,7 +233,9 @@ The difference between each quality increasing from 10 to 30 is dramatic, but af
 
 </details>
 
+
 Here, quality 40 was the best quality, keeping the size as small as possible. However, it had some artifacts that I fear could be of issue in the future, therefore; I am going to use quality 50.
+
 
 </details>
 
