@@ -3,7 +3,7 @@ I am currently writing some code to serve images over web. I am converting my jp
 The question I had was: how does the quality and effort parameter of Sharp affect the output image? I want a decent-looking image, that is as small as possible, but I also have strict performance requirements, meaning that the conversion has to go fast. After some searching online, I did not find any good results about this use case, so I did a small experiment, and I will collect the results here.
 
 
-For this experiment, I will use 2 nested for loops to test different combinations of quality and effort. The quality parameter will go from 10 to 90, and increment by 10. And the effort parameter will go from 0 to 9, incrementing by 1. The execution time and image size will be measured. The visual quality of the image will be inspected visually on a 13 inch MacBook Pro 2015 retina screen. The code was run on a MacBook Pro, early 2015 i5. The computer was on plugged in. No other work was done on the computer throughout the duration of the experiment. The execution time was measured over 3 image conversions to get a more reliable measurement. The original image was a 7.4 MB, 4912 × 3264 px, jpeg image.
+For this experiment, I will use 2 nested for loops to test different combinations of quality and effort. The quality parameter will go from 10 to 90, and increment by 10. And the effort parameter will go from 0 to 9, incrementing by 1. The execution time and image size will be measured. The visual quality of the image will be inspected visually on a 13 inch MacBook Pro 2015 retina screen. The code was run on a MacBook Pro, early 2015 i5. The computer was on plugged in. No other work was done on the computer throughout the duration of the experiment. The execution time was measured over 3 image conversions to get a more reliable measurement. The original image was a 7.4 MB, 4912 × 3264 px, jpeg image. The final image is 2048 × 1361 px.
 
 There are some sources of errors in this experiment that must be taken into consideration:
  - The image is saved to the disk, therefore the execution time is also affected by disk speed. In my use case, I also want to take this into consideration, as disk writes are expensive. Since the computer I am running this test on has an SSD, the write speed should be fairly consistent for similar sized images.
@@ -238,5 +238,32 @@ Here, overall, quality 40 had the best quality while keeping the file size very 
 
 
 </details>
+
+
+#### Summary:
+In my particular use case, quality 50 turned out to be the lowest quality setting that has practically identical visual quality to the higher quality images. At quality 50, all different efforts were compared, but after effort 3, the increased effort makes practically no difference. Therefore, I am going to use quality 50, effort 3. This means that the computational resources are reduced 3.7 times, while maintaining the same image quality and size as the default settings. The size has been reduced by 7.4 times when comparing the avif to the same resolution jpeg, and 18 times compared to the original resolution jpeg.
+
+*Quality 50, effort 3*
+
+<img width="365" alt="quality50_effort3" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/0b434f80-18d3-45a3-9206-65c633252445">
+
+*Quality 50, effort 4*
+
+<img width="368" alt="quality50_effort4" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/d9618db5-b66a-4f5a-8a99-242f147699bb">
+
+*Original image*
+
+<img width="368" alt="original_" src="https://github.com/Emanuel-Bjurhager/random_bits_of_information/assets/71664020/85a808ba-3863-475b-8000-1be870b665d7">
+
+
+
+
+
+
+If this experiment added value to your project, then consider supporting me with a cup of coffee ☕
+
+<a href="https://www.buymeacoffee.com/emanuelb" target="_blank"><img src="https://raw.githubusercontent.com/appcraftstudio/buymeacoffee/master/Images/snapshot-bmc-button.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
+
 
 
