@@ -234,7 +234,7 @@ The difference between each quality increasing from 10 to 30 is dramatic, but af
 </details>
 
 
-Here, quality 40 was the best quality, keeping the size as small as possible. However, it had some artifacts that I fear could be of issue in the future, therefore; I am going to use quality 50.
+Here, overall, quality 40 had the best quality while keeping the file size very small. However, it had some artifacts that I fear could be of issue in the future, therefore; I am going to use quality 50.
 
 
 </details>
